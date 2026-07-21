@@ -1025,8 +1025,36 @@
       /* Nav */
       nav { padding: 0.85rem 1.25rem; }
 
-      /* Hero */
-      .hero-content { padding: 3rem 1.25rem 4.5rem; }
+      /* Hero – vis heile bildet på mobil (begge personar) */
+      #topp {
+        min-height: 0;
+        display: block;
+        background: #2a1a0a;
+      }
+      .hero-bg {
+        position: relative;
+        width: 100%;
+      }
+      .hero-bg img {
+        object-fit: contain;
+        height: auto;
+        width: 100%;
+      }
+      .hero-overlay {
+        background: linear-gradient(
+          to top,
+          rgba(15, 6, 1, 0.6) 0%,
+          rgba(15, 6, 1, 0.05) 60%,
+          transparent 100%
+        );
+      }
+      .hero-content {
+        position: relative;
+        z-index: 2;
+        background: linear-gradient(to bottom, rgba(10,4,1,0.55), rgba(10,4,1,0.82));
+        padding: 2rem 1.25rem 3.5rem;
+        margin-top: -2px;
+      }
       .hero-btns { flex-direction: column; gap: 0.75rem; }
       .hero-btns .btn { text-align: center; width: 100%; max-width: 280px; }
 
