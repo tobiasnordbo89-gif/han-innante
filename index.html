@@ -1,0 +1,1661 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Han Innante – Torolf Nordbø</title>
+  <meta name="description" content="Torolf Nordbø alias Han Innante – stand-up, visekonsert, foredrag og imitasjons-quiz frå Finnøy i Rogaland." />
+
+  <!-- =============================================
+       FONTAR – bytt ut om du vil ha andre
+       ============================================= -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* =============================================
+       CSS-VARIABLAR – fargar, fontar osv.
+       ============================================= */
+    :root {
+      --sand:        #f5efe6;
+      --warm-white:  #fdfaf6;
+      --terracotta:  #c0623a;
+      --terracotta-dark: #a04e2c;
+      --ocean:       #2a4a5e;
+      --ocean-light: #3d6278;
+      --bark:        #6b4f3a;
+      --bark-light:  #9c7a62;
+      --text:        #2c2018;
+      --text-soft:   #5a4035;
+      --border:      #e0d4c8;
+
+      --font-serif: 'Special Elite', 'Courier New', monospace;
+      --font-sans:  'Special Elite', 'Courier New', monospace;
+
+      --section-padding: 5rem 1.5rem;
+      --max-width: 900px;
+    }
+
+    /* =============================================
+       RESET & BASE
+       ============================================= */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      background: var(--warm-white);
+      color: var(--text);
+      font-family: var(--font-sans);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    img { max-width: 100%; display: block; }
+
+    a { color: inherit; text-decoration: none; }
+
+    h1, h2, h3 { font-family: var(--font-serif); line-height: 1.2; }
+
+    /* =============================================
+       NAVIGASJON
+       ============================================= -->
+    /* =============================================
+       NAV
+       ============================================= */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2rem;
+      background: rgba(20, 10, 3, 0.55);
+      backdrop-filter: blur(6px);
+      transition: background 0.3s, box-shadow 0.3s;
+    }
+
+    nav.scrolled {
+      background: rgba(20, 10, 3, 0.92);
+      box-shadow: 0 1px 16px rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(10px);
+    }
+
+    .nav-logo {
+      font-family: var(--font-serif);
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--terracotta);
+      letter-spacing: 0.02em;
+      text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.9);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--terracotta); }
+
+    /* Hamburger – mobil */
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+
+    .nav-toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--text);
+      transition: transform 0.3s, opacity 0.3s;
+    }
+
+    @media (max-width: 700px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0; right: 0;
+        background: var(--warm-white);
+        flex-direction: column;
+        gap: 0;
+        box-shadow: 0 8px 24px rgba(44,32,24,0.1);
+        padding: 0.5rem 0 1rem;
+      }
+
+      .nav-links.open { display: flex; }
+
+      .nav-links li a {
+        display: block;
+        padding: 0.75rem 2rem;
+        font-size: 1rem;
+      }
+
+      .nav-toggle { display: flex; }
+    }
+
+    /* =============================================
+       HERO
+       ============================================= */
+    #topp {
+      position: relative;
+      min-height: 100svh;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+      background: #2a1a0a;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+    }
+
+    .hero-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+      display: block;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(15, 6, 1, 0.85) 0%,
+        rgba(15, 6, 1, 0.1) 50%,
+        transparent 100%
+      );
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: var(--max-width);
+      width: 100%;
+      margin: 0 auto;
+      padding: 4rem 2rem 5rem;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      background: rgba(192, 98, 58, 0.12);
+      border: 1px solid rgba(192, 98, 58, 0.4);
+      border-radius: 2px;
+      padding: 0.3em 0.9em;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-title {
+      display: none; /* bildet har allereie namn på seg */
+    }
+
+    .hero-tagline {
+      display: none; /* bildet har allereie tagline */
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.85em 2em;
+      border-radius: 3px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      border: 2px solid transparent;
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+
+    .btn-primary {
+      background: var(--terracotta);
+      color: #fff;
+      box-shadow: 0 4px 16px rgba(192,98,58,0.35);
+    }
+
+    .btn-primary:hover {
+      background: var(--terracotta-dark);
+      box-shadow: 0 6px 20px rgba(192,98,58,0.45);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: #fff;
+      border-color: rgba(255,255,255,0.7);
+    }
+
+    .btn-outline:hover { background: rgba(255,255,255,0.12); }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+      opacity: 0.5;
+      animation: bob 2s ease-in-out infinite;
+    }
+
+    .hero-scroll span {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #fff;
+    }
+
+    .hero-scroll svg { color: #fff; }
+
+    @keyframes bob {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50%       { transform: translateX(-50%) translateY(6px); }
+    }
+
+    /* =============================================
+       FELLES SEKSJONS-LAYOUT
+       ============================================= */
+    section { padding: var(--section-padding); }
+
+    .section-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    .section-label {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 5vw, 3rem);
+      color: var(--ocean);
+      margin-bottom: 1.5rem;
+    }
+
+    .divider {
+      width: 48px;
+      height: 3px;
+      background: var(--terracotta);
+      margin-bottom: 2rem;
+      border-radius: 2px;
+    }
+
+    /* =============================================
+       OM / HAN INNANTE
+       ============================================= */
+    #om {
+      background: var(--sand);
+    }
+
+    .om-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .om-img-wrap {
+      position: relative;
+    }
+
+    .om-img-wrap::before {
+      content: '';
+      position: absolute;
+      inset: -12px 12px 12px -12px;
+      border: 2px solid var(--terracotta);
+      border-radius: 2px;
+      opacity: 0.35;
+    }
+
+    .om-img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      border-radius: 2px;
+      /* =============================================
+         BILDE: bytt ut src med Torolf-bilde
+         ============================================= */
+    }
+
+    .om-img-placeholder {
+      width: 100%;
+      aspect-ratio: 3/4;
+      background: linear-gradient(135deg, var(--bark-light) 0%, var(--ocean-light) 100%);
+      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,0.6);
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    /* Karakterbilde med kvit bakgrunn – blend mot sand */
+    .om-img-karakter {
+      width: 100%;
+      display: block;
+      mix-blend-mode: multiply;
+      border-radius: 2px;
+    }
+
+    .om-text p {
+      color: var(--text-soft);
+      margin-bottom: 1.25rem;
+      font-size: 1.05rem;
+    }
+
+    .om-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 1.5rem;
+    }
+
+    .om-tag {
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.4em 1em;
+      border-radius: 2px;
+      background: var(--ocean);
+      color: #fff;
+      letter-spacing: 0.04em;
+    }
+
+    @media (max-width: 680px) {
+      .om-grid { grid-template-columns: 1fr; gap: 2rem; }
+    }
+
+    /* =============================================
+       SHOW & TURNÉ
+       =============================================
+       REDIGER showdatoar i JS-seksjonen nedst i fila
+       ============================================= */
+    #show { background: var(--warm-white); }
+
+    .show-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .show-item {
+      display: grid;
+      grid-template-columns: 90px 1fr auto;
+      align-items: center;
+      gap: 1.5rem;
+      padding: 1.35rem 0;
+      border-bottom: 1px solid var(--border);
+      transition: background 0.15s;
+    }
+
+    .show-item:hover { background: var(--sand); margin: 0 -1.5rem; padding-left: 1.5rem; padding-right: 1.5rem; }
+
+    .show-dato {
+      text-align: center;
+    }
+
+    .show-dag {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+    }
+
+    .show-dd {
+      font-family: var(--font-serif);
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--ocean);
+      line-height: 1;
+    }
+
+    .show-mnd {
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-soft);
+    }
+
+    .show-info-tittel {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .show-info-sted {
+      font-size: 0.9rem;
+      color: var(--text-soft);
+    }
+
+    .show-btn {
+      white-space: nowrap;
+      font-size: 0.8rem;
+      padding: 0.6em 1.4em;
+      background: transparent;
+      border: 1.5px solid var(--terracotta);
+      color: var(--terracotta);
+      border-radius: 3px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .show-btn:hover { background: var(--terracotta); color: #fff; }
+
+    .show-empty {
+      padding: 2rem 0;
+      color: var(--text-soft);
+      font-style: italic;
+    }
+
+    @media (max-width: 560px) {
+      .show-item { grid-template-columns: 70px 1fr; }
+      .show-btn { display: none; }
+    }
+
+    /* =============================================
+       VIDEO & LYD
+       ============================================= */
+    #video { background: var(--ocean); }
+
+    #video .section-title { color: #fff; }
+    #video .section-label { color: rgba(192,98,58,0.9); }
+    #video .divider { background: rgba(255,255,255,0.25); }
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem 1.5rem;
+    }
+
+    .video-grid .video-section-label {
+      grid-column: 1 / -1;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      margin-top: 1rem;
+    }
+
+    .video-embed {
+      position: relative;
+      padding-bottom: 56.25%;
+      background: rgba(0,0,0,0.3);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .video-embed iframe,
+    .video-embed .video-placeholder {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .video-placeholder {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      color: rgba(255,255,255,0.4);
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      text-align: center;
+      background: rgba(255,255,255,0.05);
+      border: 1px dashed rgba(255,255,255,0.15);
+    }
+
+    .video-placeholder svg { opacity: 0.4; }
+
+    .video-caption {
+      margin-top: 0.5rem;
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.6);
+      /* =============================================
+         TEKST: bytt ut tittel under kvart klipp
+         ============================================= */
+    }
+
+    .spotify-wrap {
+      margin-top: 2.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .spotify-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.7em 1.6em;
+      background: #1DB954;
+      color: #fff;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: opacity 0.2s;
+    }
+
+    .spotify-link:hover { opacity: 0.85; }
+
+    @media (max-width: 620px) {
+      .video-grid { grid-template-columns: 1fr; }
+    }
+
+    /* =============================================
+       FOLK BROTHERS
+       ============================================= */
+    #folkbrothers {
+      background: var(--warm-white);
+    }
+
+    .fb-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .fb-img-wrap {
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.18);
+    }
+
+    .fb-img {
+      width: 100%;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+
+    .fb-img-wrap:hover .fb-img { transform: scale(1.03); }
+
+    .fb-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .fb-text p {
+      color: var(--text-soft);
+      margin-bottom: 1.25rem;
+      font-size: 1.05rem;
+    }
+
+    .fb-video {
+      margin-top: 1rem;
+      flex: 1;
+    }
+
+    .fb-video .video-embed {
+      height: 100%;
+      min-height: 200px;
+    }
+
+    .btn-outline-dark {
+      background: transparent;
+      color: var(--ocean);
+      border: 2px solid var(--ocean);
+      border-radius: 3px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.7em 1.6em;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .btn-outline-dark:hover {
+      background: var(--ocean);
+      color: #fff;
+    }
+
+    @media (max-width: 680px) {
+      .fb-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .fb-img { aspect-ratio: 16/9; height: auto; }
+    }
+
+    /* =============================================
+       PRESSE & REFERANSAR
+       ============================================= */
+    #presse { background: var(--sand); }
+
+    .sitat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .sitat-kort {
+      background: var(--warm-white);
+      border-radius: 4px;
+      padding: 1.75rem;
+      border-left: 3px solid var(--terracotta);
+      box-shadow: 0 2px 12px rgba(44,32,24,0.06);
+    }
+
+    .sitat-tekst {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 1.05rem;
+      color: var(--text);
+      margin-bottom: 1rem;
+      line-height: 1.6;
+    }
+
+    .sitat-kilde {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-soft);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .terning-row {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-top: 0.4rem;
+    }
+
+    .terning {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 1.6rem;
+      height: 1.6rem;
+      background: var(--terracotta);
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.85rem;
+      border-radius: 3px;
+    }
+
+    .presse-bilder {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .presse-bilde {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      object-position: center top;
+      border-radius: 3px;
+      filter: grayscale(20%);
+      transition: filter 0.3s;
+    }
+
+    .presse-bilde:hover { filter: grayscale(0%); }
+
+    @media (max-width: 560px) {
+      .presse-bilder { grid-template-columns: 1fr 1fr; }
+      .presse-bilder img:last-child { display: none; }
+    }
+
+    .presse-logoer {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem 2.5rem;
+      align-items: center;
+      opacity: 0.45;
+      filter: grayscale(1);
+    }
+
+    .presse-logo {
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: 0.04em;
+      /* =============================================
+         LOGOAR: bytt desse ut med <img>-taggar
+         ============================================= */
+    }
+
+    /* =============================================
+       BOOKING & KONTAKT
+       ============================================= */
+    #booking { background: var(--warm-white); }
+
+    .booking-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .booking-info h3 {
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      color: var(--ocean);
+    }
+
+    .kontakt-linje {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+      font-size: 0.95rem;
+      color: var(--text-soft);
+    }
+
+    .kontakt-linje a { color: var(--terracotta); font-weight: 500; }
+    .kontakt-linje a:hover { text-decoration: underline; }
+
+    .sosiale-ikon {
+      display: flex;
+      gap: 0.75rem;
+      margin-top: 2rem;
+    }
+
+    .sosialt {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 50%;
+      background: var(--sand);
+      color: var(--ocean);
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .sosialt:hover { background: var(--terracotta); color: #fff; }
+
+    /* Skjema */
+    .kontakt-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .form-group label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-soft);
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      padding: 0.75em 1em;
+      border: 1.5px solid var(--border);
+      border-radius: 3px;
+      font-size: 0.95rem;
+      font-family: var(--font-sans);
+      color: var(--text);
+      background: var(--warm-white);
+      transition: border-color 0.2s;
+      outline: none;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: var(--terracotta);
+    }
+
+    .form-group textarea { resize: vertical; min-height: 120px; }
+
+    @media (max-width: 700px) {
+      .booking-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+
+    /* =============================================
+       NYHETSBREV
+       ============================================= */
+    #nyhetsbrev {
+      background: var(--ocean);
+      text-align: center;
+      padding: 4rem 1.5rem;
+    }
+
+    #nyhetsbrev .section-inner {
+      max-width: 560px;
+    }
+
+    #nyhetsbrev .section-label { justify-content: center; display: flex; }
+
+    .nb-title {
+      font-family: var(--font-serif);
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      color: #fff;
+      margin-bottom: 0.75rem;
+    }
+
+    .nb-sub {
+      color: rgba(255,255,255,0.65);
+      font-size: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .nb-form {
+      display: flex;
+      gap: 0.75rem;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    .nb-form input {
+      flex: 1;
+      padding: 0.85em 1.2em;
+      border: none;
+      border-radius: 3px;
+      font-size: 0.95rem;
+      font-family: var(--font-sans);
+      outline: none;
+      background: rgba(255,255,255,0.12);
+      color: #fff;
+      border: 1.5px solid rgba(255,255,255,0.2);
+      transition: border-color 0.2s;
+    }
+
+    .nb-form input::placeholder { color: rgba(255,255,255,0.45); }
+    .nb-form input:focus { border-color: rgba(255,255,255,0.6); }
+
+    .nb-form button {
+      padding: 0.85em 1.8em;
+      background: var(--terracotta);
+      color: #fff;
+      border: none;
+      border-radius: 3px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.2s;
+    }
+
+    .nb-form button:hover { background: var(--terracotta-dark); }
+
+    @media (max-width: 480px) {
+      .nb-form { flex-direction: column; }
+    }
+
+    /* =============================================
+       FOOTER
+       ============================================= */
+    footer {
+      background: var(--text);
+      color: rgba(255,255,255,0.45);
+      text-align: center;
+      padding: 1.75rem 1.5rem;
+      font-size: 0.82rem;
+      letter-spacing: 0.04em;
+    }
+
+    footer a { color: rgba(255,255,255,0.6); }
+    footer a:hover { color: #fff; }
+
+    /* =============================================
+       SCROLL-ANIMASJONAR
+       ============================================= */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* Forseinking per barn */
+    .fade-up:nth-child(2) { transition-delay: 0.1s; }
+    .fade-up:nth-child(3) { transition-delay: 0.2s; }
+    .fade-up:nth-child(4) { transition-delay: 0.3s; }
+
+    /* =============================================
+       TOAST-NOTIFIKASJON
+       ============================================= */
+    .toast {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: var(--ocean);
+      color: #fff;
+      padding: 1em 1.5em;
+      border-radius: 4px;
+      font-size: 0.9rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+      transform: translateY(120%);
+      transition: transform 0.35s ease;
+      z-index: 200;
+    }
+
+    .toast.show { transform: none; }
+
+    /* =============================================
+       MOBIL – hovudreglar
+       ============================================= */
+    @media (max-width: 768px) {
+
+      :root {
+        --section-padding: 3.5rem 1.25rem;
+      }
+
+      /* Nav */
+      nav { padding: 0.85rem 1.25rem; }
+
+      /* Hero */
+      .hero-content { padding: 3rem 1.25rem 4.5rem; }
+      .hero-btns { flex-direction: column; gap: 0.75rem; }
+      .hero-btns .btn { text-align: center; width: 100%; max-width: 280px; }
+
+      /* Om */
+      .om-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .om-img-wrap { max-width: 340px; margin: 0 auto; }
+
+      /* Show */
+      .show-item {
+        grid-template-columns: 64px 1fr;
+        gap: 1rem;
+        padding: 1rem 0;
+      }
+      .show-item:hover { margin: 0; padding-left: 0; padding-right: 0; }
+      .show-btn { display: none; }
+      .show-dd { font-size: 1.8rem; }
+
+      /* Video */
+      .video-grid { grid-template-columns: 1fr; gap: 1.25rem; }
+
+      /* Folk Brothers */
+      .fb-grid { grid-template-columns: 1fr; gap: 1.75rem; }
+      .fb-img { height: auto; aspect-ratio: 16/9; }
+
+      /* Presse */
+      .sitat-grid { grid-template-columns: 1fr; }
+      .presse-bilder { grid-template-columns: 1fr 1fr; }
+
+      /* Booking */
+      .booking-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .form-row { grid-template-columns: 1fr; }
+
+      /* Nyhetsbrev */
+      .nb-form { flex-direction: column; }
+      .nb-form button { width: 100%; }
+
+      /* Knapper – touch-vennleg */
+      .btn { min-height: 48px; display: inline-flex; align-items: center; justify-content: center; }
+
+      /* Section-tittel */
+      .section-title { font-size: clamp(1.6rem, 7vw, 2.4rem); }
+
+      /* Toast */
+      .toast { right: 1rem; left: 1rem; text-align: center; }
+    }
+
+    @media (max-width: 420px) {
+      .hero-title { font-size: clamp(3rem, 14vw, 5rem); }
+      .om-img-wrap::before { display: none; }
+      .presse-bilder { grid-template-columns: 1fr; }
+      .presse-bilder img:last-child { display: block; }
+      nav { padding: 0.75rem 1rem; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- =============================================
+       NAVIGASJON
+       ============================================= -->
+  <nav id="navbar">
+    <a href="#topp" class="nav-logo">Han Innante</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Meny">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#om">Om</a></li>
+      <li><a href="#show">Show</a></li>
+      <li><a href="#video">Video</a></li>
+      <li><a href="#folkbrothers">Folk Brothers</a></li>
+      <li><a href="#presse">Presse</a></li>
+      <li><a href="#booking">Booking</a></li>
+      <li><a href="#nyhetsbrev">Nyhetsbrev</a></li>
+    </ul>
+  </nav>
+
+  <!-- =============================================
+       HERO
+       =============================================
+       BILDE: bytt ut background-image i CSS over
+         (søk etter "BILDE: bytt ut URL")
+       TEKST: endre tagline og knappetekstar nedanfor
+       ============================================= -->
+  <section id="topp">
+    <div class="hero-bg">
+      <!-- BILDE: lagre header-bildet som "header-bilde.jpeg" i same mappe -->
+      <img src="header-bilde.jpg" alt="Torolf Nordbø – Han Innante" />
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-tag">Stand-up · Visekonsert · Foredrag</div>
+      <!-- TEKST: hovudtittel -->
+      <h1 class="hero-title">Han<br>Innante</h1>
+      <!-- TEKST: tagline -->
+      <p class="hero-tagline">«Latter frå havgapet — med hjarta på rette staden»</p>
+      <div class="hero-btns">
+        <a href="#show" class="btn btn-primary">Sjå showa</a>
+        <a href="#booking" class="btn btn-outline">Booking</a>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M12 5v14M5 12l7 7 7-7"/>
+      </svg>
+      <span>Scroll</span>
+    </div>
+  </section>
+
+  <!-- =============================================
+       OM / HAN INNANTE
+       =============================================
+       TEKST: rediger biografien nedanfor
+       BILDE: bytt ut om-img-placeholder med
+              <img src="bilder/torolf.jpg" alt="Torolf Nordbø" class="om-img">
+       ============================================= -->
+  <section id="om">
+    <div class="section-inner">
+      <div class="om-grid">
+        <div class="om-img-wrap fade-up">
+          <img
+            src="sporavaar_u_tekstKutta5mb(1).jpeg"
+            alt="Torolf Nordbø med gitar mot teglvegg"
+            class="om-img"
+          />
+        </div>
+        <div class="om-text fade-up">
+          <span class="section-label">Han Innante</span>
+          <h2 class="section-title">Torolf Nordbø</h2>
+          <div class="divider"></div>
+          <!-- TEKST: biografi – rediger fritt -->
+          <p>
+            Eg e frå Finnøy i Rogaland, og eg har alltid vore den som lo litt for høgt og sa litt for mykje.
+            Det viste seg å vera ein god greie.
+          </p>
+          <p>
+            Som <em>Han Innante</em> blander eg stand-up, musikk og forteljing til noko som er vanskeleg å setja
+            i bås — men enkelt å kjenna att. Anten det er visekveld med gitar, fullt standup-show, imitasjons-quiz
+            eller eit foredrag med litt meir hjarte i, so forsøker eg å la folk gå heim litt lettare enn dei kom.
+          </p>
+          <p>
+            TV-seing frå NRK, fleire CD-ar og DVD-ar på beltet, og Rogaland Mållags kulturpris i skuffen —
+            men det eg trivst best med er å stå framfor eit fullt hus og sjå at lattaren smittar.
+          </p>
+          <div class="om-tags">
+            <span class="om-tag">Stand-up</span>
+            <span class="om-tag">Visekonsert</span>
+            <span class="om-tag">Foredrag</span>
+            <span class="om-tag">Imitasjons-quiz</span>
+            <span class="om-tag">NRK</span>
+            <span class="om-tag">Rogalending</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       SHOW & TURNÉ
+       =============================================
+       DATOAR: rediger arrayet "showData" lenger ned i
+               <script>-seksjonen. Alle datoar er der.
+       ============================================= -->
+  <section id="show">
+    <div class="section-inner">
+      <span class="section-label fade-up">Kor er eg?</span>
+      <h2 class="section-title fade-up">Show &amp; Turné</h2>
+      <div class="divider fade-up"></div>
+      <div class="show-list" id="showList">
+        <!-- Fylt ut av JavaScript nedst i fila -->
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       VIDEO & LYD
+       =============================================
+       YOUTUBE: bytt ut "YOUTUBE_ID_HER" med faktisk
+                video-ID frå YouTube-URL-en
+                (t.d. dQw4w9WgXcQ)
+       SPOTIFY: bytt ut href-en på spotify-lenka
+       ============================================= -->
+  <section id="video">
+    <div class="section-inner">
+      <span class="section-label fade-up">Kva er tonen?</span>
+      <h2 class="section-title fade-up">Video &amp; lyd</h2>
+      <div class="divider fade-up"></div>
+      <div class="video-grid">
+
+        <!-- Han Innante: «Han Innante» -->
+        <div class="fade-up">
+          <div class="video-embed">
+            <iframe
+              src="https://www.youtube.com/embed/TJr36ng5lIU"
+              title="Torolf Nordbø: Han Innante"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen>
+            </iframe>
+          </div>
+          <p class="video-caption">Han Innante – Torolf Nordbø</p>
+        </div>
+
+        <!-- Han Innante: «Service på vede» -->
+        <div class="fade-up">
+          <div class="video-embed">
+            <iframe
+              src="https://www.youtube.com/embed/-pflNLo7K28"
+              title="Han Innante – Service på vede"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen>
+            </iframe>
+          </div>
+          <p class="video-caption">Service på vede</p>
+        </div>
+
+        <!-- Torolf Nordbø: «Eg lengtar heim til Ryfylke i kveld» -->
+        <div class="fade-up">
+          <div class="video-embed">
+            <iframe
+              src="https://www.youtube.com/embed/C5jM_pFE7Cs"
+              title="Torolf Nordbø og Rita Eriksen – Eg lengtar heim til Ryfylke i kveld"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen>
+            </iframe>
+          </div>
+          <p class="video-caption">Eg lengtar heim til Ryfylke i kveld (m/ Rita Eriksen)</p>
+        </div>
+
+        <!-- Torolf Nordbø: «Nå dreg me sør-øve» live -->
+        <div class="fade-up">
+          <div class="video-embed">
+            <iframe
+              src="https://www.youtube.com/embed/1T9_d2hRGs8"
+              title="Han innante – Nå dreg me sør-øve (live)"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen>
+            </iframe>
+          </div>
+          <p class="video-caption">Nå dreg me sør-øve (live)</p>
+        </div>
+
+      </div>
+
+      <!-- SPOTIFY: bytt ut href -->
+      <div class="spotify-wrap fade-up">
+        <a
+          href="https://open.spotify.com/artist/BYTT_UT_MED_ARTIST_ID"
+          target="_blank"
+          rel="noopener"
+          class="spotify-link"
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.441 17.278c-.215.354-.676.465-1.031.249-2.825-1.726-6.378-2.116-10.566-1.159-.404.093-.808-.155-.901-.559-.093-.404.155-.808.559-.901 4.582-1.047 8.512-.596 11.69 1.34.355.216.465.677.249 1.03zm1.452-3.225c-.27.443-.848.583-1.291.313-3.232-1.986-8.158-2.562-11.978-1.403-.506.154-1.04-.131-1.194-.637-.154-.506.131-1.04.637-1.194 4.365-1.326 9.797-.684 13.513 1.6.443.27.583.849.313 1.321zm.125-3.356c-3.874-2.301-10.265-2.514-13.962-1.391-.593.181-1.22-.151-1.4-.744-.181-.593.151-1.22.744-1.4 4.248-1.294 11.307-1.044 15.769 1.608.534.317.711 1.003.394 1.538-.317.534-1.003.711-1.545.389z"/>
+          </svg>
+          Lytt på Spotify
+        </a>
+        <span style="color: rgba(255,255,255,0.4); font-size: 0.85rem;">— bytt ut artist-ID</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       FOLK BROTHERS
+       ============================================= -->
+  <section id="folkbrothers">
+    <div class="section-inner">
+      <div class="fb-grid">
+        <div class="fb-img-wrap fade-up">
+          <img src="Folk Brothers.jpeg" alt="Folk Brothers på scena" class="fb-img" />
+        </div>
+        <div class="fb-text fade-up">
+          <span class="section-label">Folkemusikk</span>
+          <h2 class="section-title">Folk Brothers</h2>
+          <div class="divider"></div>
+          <!-- TEKST: rediger omtale av Folk Brothers -->
+          <p>
+            Folk Brothers er eit folkemusikkduo som blander tradisjonell folkemusikk med eiga stemning
+            og scenenærvær — to musikarar, to gitarar, og røter som stikk djupt i Rogaland.
+          </p>
+          <p>
+            Sjå og lytt — her er dei i aksjon:
+          </p>
+          <div class="fb-video fade-up">
+            <div class="video-embed">
+              <iframe
+                src="https://www.youtube.com/embed/movsLFETs7M"
+                title="Folk Brothers"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+              </iframe>
+            </div>
+          </div>
+          <a
+            href="https://www.youtube.com/watch?v=movsLFETs7M"
+            target="_blank"
+            rel="noopener"
+            class="btn btn-outline-dark"
+            style="margin-top:1.25rem; display:inline-block;"
+          >Sjå på YouTube</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       PRESSE & REFERANSAR
+       =============================================
+       SITAT: rediger tekst og kjelde i kvar .sitat-kort
+       LOGOAR: bytt ut .presse-logo-tekstane med <img>
+       ============================================= -->
+  <section id="presse">
+    <div class="section-inner">
+      <span class="section-label fade-up">Kva seier dei?</span>
+      <h2 class="section-title fade-up">Presse &amp; referansar</h2>
+      <div class="divider fade-up"></div>
+
+      <div class="sitat-grid">
+
+        <!-- SITAT 1: rediger tekst og kjelde -->
+        <div class="sitat-kort fade-up">
+          <p class="sitat-tekst">
+            «Plasshoaldersitat — bytt ut med ekte anmelding. Han Innante leverte eit show som sette spor.»
+          </p>
+          <div class="kontakt-linje" style="margin:0; gap: 0.5rem;">
+            <span class="sitat-kilde">Stavanger Aftenblad</span>
+            <div class="terning-row">
+              <span class="terning">5</span>
+              <span style="font-size:0.7rem;color:var(--text-soft)">av 6</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- SITAT 2: rediger tekst og kjelde -->
+        <div class="sitat-kort fade-up">
+          <p class="sitat-tekst">
+            «Plasshoaldersitat — bytt ut. Eit show fylt av varme, musikk og latterkrampar i sal.»
+          </p>
+          <span class="sitat-kilde">Publikum, Stavanger konserthus</span>
+        </div>
+
+        <!-- SITAT 3: rediger tekst og kjelde -->
+        <div class="sitat-kort fade-up">
+          <p class="sitat-tekst">
+            «Plasshoaldersitat — bytt ut. Torolf Nordbø syner at humor og djupne kan gå hand i hand.»
+          </p>
+          <div class="kontakt-linje" style="margin:0; gap: 0.5rem;">
+            <span class="sitat-kilde">NRK Rogaland</span>
+            <div class="terning-row">
+              <span class="terning">6</span>
+              <span style="font-size:0.7rem;color:var(--text-soft)">av 6</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Bildestripe -->
+      <div class="presse-bilder fade-up">
+        <img src="TorolfCcBilde.jpeg" alt="Torolf Nordbø portrett" class="presse-bilde" />
+        <img src="A241021HiSjFlRo5613.jpeg" alt="Han Innante med band på scena" class="presse-bilde" />
+        <img src="20130821-JLA_5744.jpg" alt="Torolf Nordbø med gitar" class="presse-bilde" />
+      </div>
+
+      <!-- LOGOAR: bytt ut tekst med <img src="logoar/avis.svg" alt="..."> -->
+      <div class="presse-logoer fade-up">
+        <span class="presse-logo">Stavanger Aftenblad</span>
+        <span class="presse-logo">NRK</span>
+        <span class="presse-logo">Rogalands Avis</span>
+        <span class="presse-logo">Haugesunds Avis</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       BOOKING & KONTAKT
+       =============================================
+       TELEFON / E-POST: bytt ut nedanfor
+       SOSIALE MEDIUM: bytt ut href-ar
+       SKJEMA: koble til ein teneste som Formspree,
+               Netlify Forms e.l. — sjå README
+       ============================================= -->
+  <section id="booking">
+    <div class="section-inner">
+      <span class="section-label fade-up">Vil du ha meg?</span>
+      <h2 class="section-title fade-up">Booking &amp; kontakt</h2>
+      <div class="divider fade-up"></div>
+
+      <div class="booking-grid">
+
+        <div class="booking-info fade-up">
+          <h3>Ta kontakt</h3>
+
+          <!-- TELEFON: bytt ut -->
+          <div class="kontakt-linje">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.01 2.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/>
+            </svg>
+            <a href="tel:+4799999999">+47 999 99 999 — bytt ut</a>
+          </div>
+
+          <!-- E-POST: bytt ut -->
+          <div class="kontakt-linje">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+            <a href="mailto:booking@haninnante.no">booking@haninnante.no — bytt ut</a>
+          </div>
+
+          <div class="sosiale-ikon">
+            <!-- FACEBOOK: bytt ut href -->
+            <a href="https://facebook.com/BYTT_UT" target="_blank" rel="noopener" class="sosialt" title="Facebook">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/>
+              </svg>
+            </a>
+            <!-- YOUTUBE: bytt ut href -->
+            <a href="https://youtube.com/@BYTT_UT" target="_blank" rel="noopener" class="sosialt" title="YouTube">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M22.54 6.42A2.78 2.78 0 0020.58 4.4C18.88 4 12 4 12 4s-6.88 0-8.58.46a2.78 2.78 0 00-1.96 2.02A29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.42 19.6C5.12 20 12 20 12 20s6.88 0 8.58-.46a2.78 2.78 0 001.96-2.02A29 29 0 0023 12a29 29 0 00-.46-5.58zM9.75 15.02V8.98L15.5 12l-5.75 3.02z"/>
+              </svg>
+            </a>
+            <!-- SPOTIFY: bytt ut href -->
+            <a href="https://open.spotify.com/artist/BYTT_UT" target="_blank" rel="noopener" class="sosialt" title="Spotify">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.441 17.278c-.215.354-.676.465-1.031.249-2.825-1.726-6.378-2.116-10.566-1.159-.404.093-.808-.155-.901-.559-.093-.404.155-.808.559-.901 4.582-1.047 8.512-.596 11.69 1.34.355.216.465.677.249 1.03zm1.452-3.225c-.27.443-.848.583-1.291.313-3.232-1.986-8.158-2.562-11.978-1.403-.506.154-1.04-.131-1.194-.637-.154-.506.131-1.04.637-1.194 4.365-1.326 9.797-.684 13.513 1.6.443.27.583.849.313 1.321zm.125-3.356c-3.874-2.301-10.265-2.514-13.962-1.391-.593.181-1.22-.151-1.4-.744-.181-.593.151-1.22.744-1.4 4.248-1.294 11.307-1.044 15.769 1.608.534.317.711 1.003.394 1.538-.317.534-1.003.711-1.545.389z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- SKJEMA: for å ta imot meldingar, koble til Formspree:
+             1. Gå til formspree.io og opprett konto
+             2. Bytt ut action-URL under
+        -->
+        <form
+          class="kontakt-form fade-up"
+          id="kontaktForm"
+          action="https://formspree.io/f/BYTT_UT_MED_FORM_ID"
+          method="POST"
+        >
+          <div class="form-row">
+            <div class="form-group">
+              <label for="namn">Namn</label>
+              <input type="text" id="namn" name="namn" placeholder="Ola Nordmann" required />
+            </div>
+            <div class="form-group">
+              <label for="epost">E-post</label>
+              <input type="email" id="epost" name="epost" placeholder="ola@eksempel.no" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="type">Kva gjeld det?</label>
+            <select id="type" name="type">
+              <option value="booking">Booking – show/konsert</option>
+              <option value="foredrag">Booking – foredrag</option>
+              <option value="presse">Presse/media</option>
+              <option value="anna">Anna</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="melding">Melding</label>
+            <textarea id="melding" name="melding" placeholder="Skriv gjerne om dato, stad og kva du ser for deg…" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Send melding</button>
+        </form>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       NYHETSBREV
+       =============================================
+       SKJEMA: koble til Mailchimp, Klaviyo e.l.
+               Bytt ut action-URL under
+       ============================================= -->
+  <section id="nyhetsbrev">
+    <div class="section-inner">
+      <span class="section-label">Hald deg oppdatert</span>
+      <!-- TEKST: endre overskrift og ingress -->
+      <h2 class="nb-title">Meld deg på nyheitsbrevet</h2>
+      <p class="nb-sub">Få varsel om nye show, bak-kulissane-stoff og anna sørante frå Rogaland.</p>
+      <!--
+        MAILCHIMP: bytt ut action-URL med din Mailchimp embed-URL
+        Sjå README for instruksjonar
+      -->
+      <form class="nb-form" id="nbForm" action="#" method="POST">
+        <input
+          type="email"
+          name="email"
+          placeholder="din@epost.no"
+          required
+          aria-label="E-postadresse"
+        />
+        <button type="submit">Meld på</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- =============================================
+       FOOTER
+       TEKST: bytt ut årstal og namn om nødvendig
+       ============================================= -->
+  <footer>
+    <p>
+      © <span id="year"></span> Torolf Nordbø / Han Innante &nbsp;·&nbsp;
+      <!-- LENKER: legg til personvernerklæring om du treng det -->
+      <a href="#topp">Til toppen</a>
+    </p>
+  </footer>
+
+  <!-- TOAST (varsel ved skjemasendt) -->
+  <div class="toast" id="toast"></div>
+
+  <!-- =============================================
+       JAVASCRIPT
+       ============================================= -->
+  <script>
+    /* =============================================
+       SHOW-DATOAR
+       =============================================
+       Rediger dette arrayet for å oppdatere showlista.
+       Format per objekt:
+         dato:     "ÅÅÅÅ-MM-DD"
+         tittel:   "Tittelen på showet"
+         stad:     "Scenenamn"
+         by:       "Bynamn"
+         billett:  URL til billettenesta (eller "" for ingen knapp)
+       ============================================= */
+    const showData = [
+      {
+        dato:    "2026-08-15",
+        tittel:  "Han Innante – Sommarshow",
+        stad:    "Plassholdar scene",
+        by:      "Stavanger",
+        billett: "https://www.ticketmaster.no"
+      },
+      {
+        dato:    "2026-09-06",
+        tittel:  "Visekonsert",
+        stad:    "Plassholdar kultursenter",
+        by:      "Haugesund",
+        billett: "https://www.ticketmaster.no"
+      },
+      {
+        dato:    "2026-10-22",
+        tittel:  "Stand-up Haust",
+        stad:    "Plassholdar amfi",
+        by:      "Sandnes",
+        billett: ""
+      },
+      /* ➕ Legg til fleire datoar her på same format */
+    ];
+
+    /* ===== Bygg showliste ===== */
+    (function renderShow() {
+      const list = document.getElementById('showList');
+      const dagar = ['Søn','Man','Tys','Ons','Tor','Fre','Lør'];
+      const mndr  = ['Jan','Feb','Mar','Apr','Mai','Jun','Jul','Aug','Sep','Okt','Nov','Des'];
+
+      const komande = showData
+        .filter(s => new Date(s.dato) >= new Date())
+        .sort((a, b) => new Date(a.dato) - new Date(b.dato));
+
+      if (komande.length === 0) {
+        list.innerHTML = '<p class="show-empty">Nye datoar kjem snart – meld deg på nyheitsbrevet!</p>';
+        return;
+      }
+
+      komande.forEach(s => {
+        const d = new Date(s.dato);
+        const item = document.createElement('div');
+        item.className = 'show-item fade-up';
+        item.innerHTML = `
+          <div class="show-dato">
+            <div class="show-dag">${dagar[d.getDay()]}</div>
+            <div class="show-dd">${d.getDate()}</div>
+            <div class="show-mnd">${mndr[d.getMonth()]} ${d.getFullYear()}</div>
+          </div>
+          <div>
+            <div class="show-info-tittel">${s.tittel}</div>
+            <div class="show-info-sted">${s.stad}, ${s.by}</div>
+          </div>
+          ${s.billett
+            ? `<a href="${s.billett}" target="_blank" rel="noopener" class="show-btn">Billettar</a>`
+            : '<span></span>'}
+        `;
+        list.appendChild(item);
+      });
+    })();
+
+    /* ===== Nav: scroll-effekt + hamburgermeny ===== */
+    const navbar    = document.getElementById('navbar');
+    const navToggle = document.getElementById('navToggle');
+    const navLinks  = document.getElementById('navLinks');
+
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    navToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+    });
+
+    navLinks.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => navLinks.classList.remove('open'));
+    });
+
+    /* ===== Scroll-animasjonar (IntersectionObserver) ===== */
+    const observer = new IntersectionObserver(
+      entries => entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); }
+      }),
+      { threshold: 0.12 }
+    );
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    /* ===== Skjema-innsending (enkel håndtering) ===== */
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 4000);
+    }
+
+    document.getElementById('kontaktForm').addEventListener('submit', function(e) {
+      // Formspree taklar innsendinga — dette er berre UI-feedback
+      // Fjern evt. e.preventDefault() viss du vil ha ekte innsending
+      // e.preventDefault();
+      // showToast('Takk! Eg kjem attende så snart eg kan. 👋');
+    });
+
+    document.getElementById('nbForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      showToast('Du er påmeldt nyheitsbrevet! Takk 🙌');
+      this.reset();
+    });
+
+    /* ===== Årstal i footer ===== */
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>
